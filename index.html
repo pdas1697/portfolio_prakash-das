@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="Prakash Das - Software Developer Portfolio. Aspiring developer skilled in PHP, JavaScript, Python, and modern web technologies.">
+    <meta name="keywords" content="Prakash Das, Software Developer, PHP, JavaScript, Python, Web Developer, Portfolio">
+    <meta name="author" content="Prakash Das">
+    <title>Prakash Das | Software Developer Portfolio</title>
+    <!-- Google Fonts + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 10% 20%, #0a0f2a, #020617);
+            color: #eef2ff;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* custom scroll */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 12px; }
+
+        /* navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 6%;
+            background: rgba(2, 6, 23, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #7dd3fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
+        .logo i {
+            color: #38bdf8;
+            margin-right: 6px;
+            background: none;
+            -webkit-background-clip: unset;
+        }
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        nav ul li a {
+            color: #cbd5e6;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: #38bdf8;
+        }
+        
+        /* hero */
+        .hero {
+            padding: 70px 6% 50px;
+            text-align: center;
+        }
+        .hero-content {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+        
+        /* Profile Image Styles */
+        .profile-img-container {
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #38bdf8;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #1e293b;
+        }
+        .profile-img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 40px rgba(56, 189, 248, 0.6);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-top: 0.2rem;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, #7dd3fc, #38bdf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-tag {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin: 12px 0 20px;
+        }
+        
+        /* Resume Button Styles */
+        .resume-section {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1.8rem 0 1rem;
+            flex-wrap: wrap;
+        }
+        .resume-btn, .hire-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .resume-btn {
+            background: linear-gradient(135deg, #38bdf8, #2dd4bf);
+            color: #020617;
+            border: none;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+        .resume-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4);
+            background: linear-gradient(135deg, #7dd3fc, #5eead4);
+        }
+        .hire-btn {
+            background: rgba(56, 189, 248, 0.15);
+            border: 1.5px solid #38bdf8;
+            color: #38bdf8;
+        }
+        .hire-btn:hover {
+            background: rgba(56, 189, 248, 0.3);
+            transform: translateY(-3px);
+            border-color: #7dd3fc;
+            color: #7dd3fc;
+        }
+        
+        .contact-badge {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 28px auto 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            padding: 14px 24px;
+            border-radius: 60px;
+            max-width: 850px;
+            border: 1px solid #38bdf855;
+        }
+        .contact-badge p {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+        }
+        .contact-badge a {
+            color: #7dd3fc;
+            text-decoration: none;
+        }
+        
+        /* sections */
+        section {
+            padding: 80px 6%;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            border-left: 5px solid #38bdf8;
+            padding-left: 1rem;
+            display: inline-block;
+        }
+        h2 i {
+            color: #38bdf8;
+            margin-right: 10px;
+        }
+        
+        /* grids */
+        .skills-grid, .edu-grid, .cert-grid, .exp-grid, .projects-grid, .achieve-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.5rem;
+        }
+        .card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            border-radius: 28px;
+            padding: 1.6rem;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #38bdf8;
+            background: rgba(51, 65, 85, 0.75);
+            box-shadow: 0 20px 30px -12px rgba(56,189,248,0.2);
+        }
+        .card h3 {
+            color: #7dd3fc;
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .card p, .card li {
+            color: #cbd5e6;
+            font-size: 0.9rem;
+        }
+        .card ul, .project ul {
+            margin-top: 10px;
+            padding-left: 1.2rem;
+        }
+        .card li {
+            margin: 6px 0;
+        }
+        .project-btns {
+            margin-top: 16px;
+            display: flex;
+            gap: 12px;
+        }
+        .project-btns a {
+            background: #1e293b;
+            padding: 5px 16px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #b9c7da;
+            text-decoration: none;
+            transition: 0.2s;
+            border: 1px solid #38bdf855;
+        }
+        .project-btns a:hover {
+            background: #38bdf8;
+            color: #020617;
+        }
+        .contact-panel {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1.5rem;
+            border: 1px solid #38bdf855;
+        }
+        .contact-panel p {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+        }
+        .contact-panel i {
+            width: 28px;
+            color: #38bdf8;
+            font-size: 1.2rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #020617cc;
+            border-top: 1px solid #38bdf833;
+            font-size: 0.85rem;
+        }
+        #scrollTop {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: #38bdf8;
+            color: #020617;
+            border: none;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            transition: 0.2s;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 99;
+        }
+        #scrollTop:hover {
+            background: #7dd3fc;
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 780px) {
+            nav { flex-direction: column; text-align: center; }
+            .hero h1 { font-size: 2rem; }
+            .contact-badge { flex-direction: column; align-items: center; border-radius: 28px; }
+            section { padding: 60px 5%; }
+            h2 { font-size: 1.7rem; }
+            .profile-img { width: 130px; height: 130px; }
+            .resume-btn, .hire-btn { padding: 10px 20px; font-size: 0.85rem; }
+            .resume-section { gap: 0.8rem; }
+        }
+        
+        .highlight {
+            font-weight: 500;
+            color: #b9e0ff;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo"><i class="fas fa-laptop-code"></i> Prakash Das</div>
+    <ul>
+        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#skills"><i class="fas fa-cogs"></i> Skills</a></li>
+        <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+        <li><a href="#certifications"><i class="fas fa-certificate"></i> Certs</a></li>
+        <li><a href="#achievements"><i class="fas fa-trophy"></i> Achievements</a></li>
+        <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+        <li><a href="#projects"><i class="fas fa-diagram-project"></i> Projects</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Hero / Home with Profile Image -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <!-- Profile Image Section -->
+        <div class="profile-img-container">
+            <img id="profileImage" 
+                 src="profile.jpg"
+                 alt="Prakash Das Profile" 
+                 class="profile-img"
+                 onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Prakash+Das&background=38bdf8&color=fff&size=200&rounded=true&bold=true&length=2'">
+        </div>
+        <h1>Hi, I'm <span>Prakash Das</span></h1>
+        <div class="hero-tag">
+            <i class="fas fa-code"></i> Aspiring Software Developer | PHP • JavaScript • Python | Problem Solver
+        </div>
+        
+        <!-- Resume Button -->
+        <div class="resume-section">
+            <a href="resume.pdf" target="_blank" class="resume-btn">
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+            <a href="#contact" class="hire-btn">
+                <i class="fas fa-paper-plane"></i> Hire Me
+            </a>
+        </div>
+        
+        <div class="contact-badge">
+            <p><i class="fas fa-phone-alt"></i> 8961306883</p>
+            <p><i class="fas fa-envelope"></i> Prakashdas479@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> Bansberia, West Bengal</p>
+            <p><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/prakash312" target="_blank">linkedin.com/in/prakash312</a></p>
+            <p><i class="fab fa-github"></i> <a href="https://github.com/pdas1697" target="_blank">github.com/pdas1697</a></p>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+    <div class="container">
+        <h2><i class="fas fa-microchip"></i> Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="card"><h3>🖥️ IT Tools</h3><p>Windows, MS Office, Google Docs, Sheets</p></div>
+            <div class="card"><h3>🎨 Web Designing</h3><p>HTML5, CSS3, JavaScript, jQuery, AngularJS</p></div>
+            <div class="card"><h3>🐍 Python & AI</h3><p>NumPy, Pandas, Matplotlib, TensorFlow, Keras, Scikit-learn</p></div>
+            <div class="card"><h3>📡 IoT</h3><p>Arduino, Sensors, Raspberry Pi</p></div>
+            <div class="card"><h3>⚙️ Programming</h3><p>Python, Java, Kotlin, C#, VB.NET</p></div>
+            <div class="card"><h3>🌐 Web Development</h3><p>PHP, MySQL, ASP.NET MVC</p></div>
+            <div class="card"><h3>🗄️ Databases</h3><p>MySQL, Oracle, SQL Server, MongoDB</p></div>
+            <div class="card"><h3>🤖 Machine Learning</h3><p>TensorFlow, Keras, Scikit-learn</p></div>
+            <div class="card"><h3>📊 Data Tools</h3><p>Excel, Power BI</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+    <div class="container">
+        <h2><i class="fas fa-university"></i> Education</h2>
+        <div class="edu-grid">
+            <div class="card"><h3>🎓 Bachelor of Science (General)</h3><p><strong>Bidhan Chandra College, Rishra | 2018</strong></p><p>Subjects: Computer Science, Electronics, Mathematics</p><p>Strong analytical and problem-solving skills, solid science foundation.</p></div>
+            <div class="card"><h3>📚 Higher Secondary (12th) – Science</h3><p><strong>Bansberia Ganges High School | 2015</strong></p><p>Physics, Chemistry, Mathematics | Developed analytical thinking & discipline.</p></div>
+            <div class="card"><h3>🏫 Secondary (10th)</h3><p><strong>Bansberia Ganges High School | 2013</strong></p><p>Completed secondary education, built strong academic foundation.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Certifications -->
+<section id="certifications">
+    <div class="container">
+        <h2><i class="fas fa-certificate"></i> Certifications</h2>
+        <div class="cert-grid">
+            <div class="card"><h3>Junior Software Developer | 2026</h3><p>Ramakrishna Math, Baghbazar</p><ul><li>Software development fundamentals</li><li>Hands-on programming experience</li></ul></div>
+            <div class="card"><h3>Advanced Computer Programming (CACPA) | 2026</h3><p>Ramakrishna Mission Shilpamandira</p><ul><li>Programming fundamentals & application development</li><li>Practical coding & problem-solving</li></ul></div>
+            <div class="card"><h3>Course on Computer Concepts (CCC) | 2026</h3><p>NIELIT</p><ul><li>Basic computer literacy & IT fundamentals</li><li>Digital skills & understanding of IT</li></ul></div>
+            <div class="card"><h3>Diploma in Office Application | 2014</h3><p>Computer Dot Com</p><ul><li>MS Word, Excel, PowerPoint proficiency</li><li>Office productivity skills</li></ul></div>
+        </div>
+    </div>
+</section>
+
+<!-- Achievements -->
+<section id="achievements">
+    <div class="container">
+        <h2><i class="fas fa-trophy"></i> Achievements</h2>
+        <div class="achieve-grid">
+            <div class="card"><h3>🏆 Ram Awatar Gupta Pratibha Puraskar | 2015</h3><ul><li>Recognized for academic excellence</li><li>Outstanding performance award</li></ul></div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience -->
+<section id="experience">
+    <div class="container">
+        <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+        <div class="exp-grid">
+            <div class="card"><h3>📦 FC Associate</h3><p><strong>Avant Career Pvt Ltd</strong> | Dec 2024 – Jan 2025</p><ul><li>Managed sorting & packing operations efficiently</li><li>Maintained inventory accuracy & workflow, ensured timely dispatch</li></ul></div>
+            <div class="card"><h3>🛡️ Loss Prevention Associate</h3><p><strong>Orange Securitas Pvt Ltd</strong> | Oct 2022 – May 2023</p><ul><li>Monitored store activities & ensured safety</li><li>Prevented theft, minimized losses, maintained surveillance reports</li></ul></div>
+            <div class="card"><h3>🛍️ Customer Service Associate</h3><p><strong>Reliance Retail Limited</strong> | Feb 2021 – July 2022</p><ul><li>Handled customer queries & resolved issues</li><li>Improved customer satisfaction & service quality</li><li>Maintained store operations & product displays</li></ul></div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+    <div class="container">
+        <h2><i class="fas fa-diagram-project"></i> Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="card">
+    <h3>🏫 School Management System Website</h3>
+    <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+    <ul>
+        <li>Responsive school website with events, notice board, gallery</li>
+        <li>User-friendly UI for student info management</li>
+    </ul>
+    <div class="project-btns">
+        <a href="https://github.com/pdas1697/school_management_system-web-designing-project-.git" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i> GitHub
+        </a>
+        <!---- <a href="#">
+            <i class="fas fa-eye"></i> Demo
+        </a> ---->
+    </div>
+</div>
+           <div class="card">
+    <h3>👥 Employee Management System</h3>
+    <p><strong>Tech:</strong> Python, MySQL, BeautifulTable</p>
+    <ul>
+        <li>Full CRUD operations, salary automation (HRA, TA, PF, Net Pay)</li>
+        <li>Error handling & structured data display</li>
+    </ul>
+    <div class="project-btns">
+        <a href="https://github.com/pdas1697/employee_management_system_project-Python-.git" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i> GitHub
+        </a>
+        <!----<a href="#">
+            <i class="fas fa-chart-simple"></i> Preview
+        </a> ---->
+    </div>
+</div>
+            <div class="card">
+    <h3>📚 Library Management System</h3>
+    <p><strong>Tech:</strong> VB.NET, Windows Forms, MySQL</p>
+    <ul>
+        <li>Manage books/customer records, MDI forms</li>
+        <li>Add, update, delete, search operations</li>
+    </ul>
+    <div class="project-btns">
+        <a href="https://github.com/pdas1697/LibrarySystem-VBNet.git" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i> GitHub
+        </a>
+        <!----<a href="#">
+            <i class="fas fa-book"></i> Demo
+        </a> ---->
+    </div>
+</div>
+            <div class="card">
+    <h3>🏛️ School Management System (C#)</h3>
+    <p><strong>Tech:</strong> C#, Windows Forms, SQL Server</p>
+    <ul>
+        <li>Secure login (Admin/User roles), student modules</li>
+        <li>Password show/hide & DB integration</li>
+    </ul>
+    <div class="project-btns">
+        <a href="https://github.com/pdas1697/School-Management-System.git" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i> GitHub
+        </a>
+        <!----<a href="#">
+            <i class="fas fa-school"></i> Live
+        </a> --->
+    </div>
+</div>
+            <div class="card">
+    <h3>🏨 Hotel Booking System</h3>
+    <p><strong>Tech:</strong> PHP, MySQL, HTML/CSS, JS</p>
+    <ul>
+        <li>Booking form with room selection, MySQL storage</li>
+        <li>Dynamic PHP backend, responsive design</li>
+    </ul>
+    <div class="project-btns">
+        <a href="https://github.com/pdas1697/hotel-booking.git" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github"></i> GitHub
+        </a>
+        <!---- <a href="#">
+            <i class="fas fa-hotel"></i> Live Demo
+        </a> ----->
+    </div>
+</div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <div class="container">
+        <h2><i class="fas fa-envelope-open-text"></i> Get in Touch</h2>
+        <div class="contact-panel">
+            <p><i class="fas fa-phone-alt"></i> +91 8961306883</p>
+            <p><i class="fas fa-envelope"></i> Prakashdas479@gmail.com</p>
+            <p><i class="fas fa-map-pin"></i> Bansberia, West Bengal</p>
+            <p><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/prakash312" target="_blank">linkedin.com/in/prakash312</a></p>
+            <p><i class="fab fa-github"></i> <a href="https://github.com/pdas1697" target="_blank">github.com/pdas1697</a></p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Prakash Das | Built with <i class="fas fa-heart" style="color:#38bdf8"></i> using modern design | Software Developer Portfolio</p>
+</footer>
+
+<button id="scrollTop"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+    // ========== SCROLL TO TOP BUTTON ==========
+    const scrollBtn = document.getElementById("scrollTop");
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 400) {
+            scrollBtn.style.display = "flex";
+            scrollBtn.style.alignItems = "center";
+            scrollBtn.style.justifyContent = "center";
+        } else {
+            scrollBtn.style.display = "none";
+        }
+    });
+    scrollBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // ========== ACTIVE NAVIGATION LINKS ==========
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll("nav ul li a");
+
+    function setActiveLink() {
+        let current = "";
+        const scrollPos = window.scrollY + 150;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                current = section.getAttribute("id");
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            const href = link.getAttribute("href")?.substring(1);
+            if (href === current) {
+                link.classList.add("active");
+            }
+        });
+    }
+    window.addEventListener("scroll", setActiveLink);
+    window.addEventListener("load", setActiveLink);
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement && targetId !== '') {
+                e.preventDefault();
+                const offsetTop = targetElement.offsetTop - 70;
+                window.scrollTo({ top: offsetTop, behavior: "smooth" });
+                history.pushState(null, null, `#${targetId}`);
+                setActiveLink();
+            }
+        });
+    });
+
+    // Intersection Observer for smooth reveal of cards
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.card, .contact-panel, h2').forEach((el) => {
+        if (!el.closest('#home')) {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(20px)";
+            el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+            observer.observe(el);
+        }
+    });
+    
+    // Resume download notification
+    document.querySelector('.resume-btn')?.addEventListener('click', function(e) {
+        const notification = document.createElement('div');
+        notification.textContent = '✓ Download started!';
+        notification.style.cssText = `
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: #38bdf8;
+            color: #020617;
+            padding: 10px 20px;
+            border-radius: 10px;
+            z-index: 9999;
+            font-weight: 500;
+            animation: slideIn 0.3s ease;
+        `;
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 2000);
+    });
+    
+    // Add animation keyframes
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    console.log("Prakash Das Portfolio — Ready!");
+</script>
+</body>
+</html>
