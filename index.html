@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="description" content="Prakash Das - Software Developer Portfolio. Aspiring developer skilled in PHP, JavaScript, Python, and modern web technologies.">
-    <meta name="keywords" content="Prakash Das, Software Developer, PHP, JavaScript, Python, Web Developer, Portfolio">
+    <meta name="description" content="Prakash Das - Software Developer Portfolio. Aspiring developer skilled in PHP, JavaScript, Python, Data Management, and modern web technologies.">
+    <meta name="keywords" content="Prakash Das, Software Developer, PHP, JavaScript, Python, Web Developer, Portfolio, Data Visualisation, Master Data Management, TCS iON">
     <meta name="author" content="Prakash Das">
-    <title>Prakash Das | Software Developer Portfolio</title>
+    <title>Prakash Das | Software Developer Portfolio | MDM Certified</title>
     <!-- Google Fonts + Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -25,12 +25,10 @@
             scroll-behavior: smooth;
         }
 
-        /* custom scroll */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 12px; }
 
-        /* navbar */
         nav {
             display: flex;
             justify-content: space-between;
@@ -80,7 +78,6 @@
             color: #38bdf8;
         }
         
-        /* hero */
         .hero {
             padding: 70px 6% 50px;
             text-align: center;
@@ -90,7 +87,6 @@
             margin: 0 auto;
         }
         
-        /* Profile Image Styles */
         .profile-img-container {
             margin-bottom: 1.5rem;
             display: flex;
@@ -129,7 +125,6 @@
             margin: 12px 0 20px;
         }
         
-        /* Resume Button Styles */
         .resume-section {
             display: flex;
             gap: 1rem;
@@ -196,7 +191,6 @@
             text-decoration: none;
         }
         
-        /* sections */
         section {
             padding: 80px 6%;
         }
@@ -217,7 +211,6 @@
             margin-right: 10px;
         }
         
-        /* grids */
         .skills-grid, .edu-grid, .cert-grid, .exp-grid, .projects-grid, .achieve-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
@@ -243,6 +236,19 @@
             font-size: 1.35rem;
             margin-bottom: 12px;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .card h3 .badge-new {
+            background: linear-gradient(135deg, #38bdf8, #2dd4bf);
+            color: #020617;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
         }
         .card p, .card li {
             color: #cbd5e6;
@@ -254,6 +260,13 @@
         }
         .card li {
             margin: 6px 0;
+        }
+        .cert-detail {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 8px;
+            border-top: 1px dashed rgba(56,189,248,0.3);
+            padding-top: 8px;
         }
         .project-btns {
             margin-top: 16px;
@@ -335,11 +348,21 @@
             .profile-img { width: 130px; height: 130px; }
             .resume-btn, .hire-btn { padding: 10px 20px; font-size: 0.85rem; }
             .resume-section { gap: 0.8rem; }
+            .card h3 { font-size: 1.2rem; }
         }
         
-        .highlight {
-            font-weight: 500;
-            color: #b9e0ff;
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .tcs-cert-highlight {
+            border-left: 4px solid #2dd4bf;
+            background: linear-gradient(135deg, rgba(56,189,248,0.12), rgba(45,212,191,0.04));
         }
     </style>
 </head>
@@ -359,10 +382,8 @@
     </ul>
 </nav>
 
-<!-- Hero / Home with Profile Image -->
 <section id="home" class="hero">
     <div class="hero-content">
-        <!-- Profile Image Section -->
         <div class="profile-img-container">
             <img id="profileImage" 
                  src="profile.jpg"
@@ -372,12 +393,11 @@
         </div>
         <h1>Hi, I'm <span>Prakash Das</span></h1>
         <div class="hero-tag">
-            <i class="fas fa-code"></i> Aspiring Software Developer | PHP • JavaScript • Python | Problem Solver
+            <i class="fas fa-code"></i> Software Developer | Data Management Professional | Python • PHP • JavaScript
         </div>
         
-        <!-- Resume Button -->
         <div class="resume-section">
-            <a href="resume.pdf" target="_blank" class="resume-btn">
+            <a href="resume.pdf" target="_blank" class="resume-btn" id="resumeDownloadBtn">
                 <i class="fas fa-download"></i> Download Resume
             </a>
             <a href="#contact" class="hire-btn">
@@ -395,7 +415,6 @@
     </div>
 </section>
 
-<!-- Skills Section -->
 <section id="skills">
     <div class="container">
         <h2><i class="fas fa-microchip"></i> Technical Skills</h2>
@@ -406,14 +425,13 @@
             <div class="card"><h3>📡 IoT</h3><p>Arduino, Sensors, Raspberry Pi</p></div>
             <div class="card"><h3>⚙️ Programming</h3><p>Python, Java, Kotlin, C#, VB.NET</p></div>
             <div class="card"><h3>🌐 Web Development</h3><p>PHP, MySQL, ASP.NET MVC</p></div>
-            <div class="card"><h3>🗄️ Databases</h3><p>MySQL, Oracle, SQL Server, MongoDB</p></div>
+            <div class="card"><h3>🗄️ Databases & MDM</h3><p>MySQL, Oracle, SQL Server, MongoDB, Master Data Management</p></div>
             <div class="card"><h3>🤖 Machine Learning</h3><p>TensorFlow, Keras, Scikit-learn</p></div>
-            <div class="card"><h3>📊 Data Tools</h3><p>Excel, Power BI</p></div>
+            <div class="card"><h3>📊 Data Tools & BI</h3><p>Excel, Power BI, Tableau, Data Governance</p></div>
         </div>
     </div>
 </section>
 
-<!-- Education -->
 <section id="education">
     <div class="container">
         <h2><i class="fas fa-university"></i> Education</h2>
@@ -425,11 +443,31 @@
     </div>
 </section>
 
-<!-- Certifications -->
+<!-- Certifications Section with BOTH Tata certifications: Data Visualisation + Master Data Management -->
 <section id="certifications">
     <div class="container">
         <h2><i class="fas fa-certificate"></i> Certifications</h2>
         <div class="cert-grid">
+            <!-- Master Data Management - TCS iON -->
+<div class="card tcs-cert-highlight" style="border: 1px solid #2dd4bf;">
+    <h3>📊 Master Data Management (MDM) <span class="badge-new"><i class="fas fa-check-circle"></i> TCS iON</span></h3>
+    <p><strong>Tata Consultancy Services</strong> | Certified: 15 Jan 2025</p>
+    <ul>
+        <li>✓ Data governance, data quality & MDM strategies</li>
+        <li>✓ Certified by Mehul Mehta, Global Delivery Head - TCS iON</li>
+    </ul>
+</div>
+            <!-- Tata Data Visualisation Simulation - Forage -->
+            <div class="card tcs-cert-highlight">
+                <h3>📈 Tata Data Visualisation: Empowering Business <span class="badge-new"><i class="fas fa-star"></i> Forage</span></h3>
+                <p><strong>Forage (Tata Consultancy Services) | 2026</strong></p>
+                <ul>
+                    <li>✓ Completed simulation: Created impactful data visualizations for TCS</li>
+                    <li>✓ Prepared strategic questions for client senior leadership meetings</li>
+                    <li>✓ Developed executive-level visual analytics to drive effective decision-making</li>
+                    <li>✓ Hands-on experience with business intelligence storytelling</li>
+                </ul>
+            </div>
             <div class="card"><h3>Junior Software Developer | 2026</h3><p>Ramakrishna Math, Baghbazar</p><ul><li>Software development fundamentals</li><li>Hands-on programming experience</li></ul></div>
             <div class="card"><h3>Advanced Computer Programming (CACPA) | 2026</h3><p>Ramakrishna Mission Shilpamandira</p><ul><li>Programming fundamentals & application development</li><li>Practical coding & problem-solving</li></ul></div>
             <div class="card"><h3>Course on Computer Concepts (CCC) | 2026</h3><p>NIELIT</p><ul><li>Basic computer literacy & IT fundamentals</li><li>Digital skills & understanding of IT</li></ul></div>
@@ -444,6 +482,8 @@
         <h2><i class="fas fa-trophy"></i> Achievements</h2>
         <div class="achieve-grid">
             <div class="card"><h3>🏆 Ram Awatar Gupta Pratibha Puraskar | 2015</h3><ul><li>Recognized for academic excellence</li><li>Outstanding performance award</li></ul></div>
+            <div class="card"><h3>📊 TCS iON MDM Certification | 2025</h3><ul><li>Master Data Management for Beginners — certified with distinction</li><li>Foundation in enterprise data governance & data quality</li></ul></div>
+            <div class="card"><h3>📈 Data Visualisation Excellence | 2026</h3><ul><li>Completed Tata TCS Forage simulation with focus on executive insights</li><li>Recognized for analytical communication & dashboard design thinking</li></ul></div>
         </div>
     </div>
 </section>
@@ -466,85 +506,45 @@
         <h2><i class="fas fa-diagram-project"></i> Featured Projects</h2>
         <div class="projects-grid">
             <div class="card">
-    <h3>🏫 School Management System Website</h3>
-    <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
-    <ul>
-        <li>Responsive school website with events, notice board, gallery</li>
-        <li>User-friendly UI for student info management</li>
-    </ul>
-    <div class="project-btns">
-        <a href="https://github.com/pdas1697/school_management_system-web-designing-project-.git" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-github"></i> GitHub
-        </a>
-        <!---- <a href="#">
-            <i class="fas fa-eye"></i> Demo
-        </a> ---->
-    </div>
-</div>
-           <div class="card">
-    <h3>👥 Employee Management System</h3>
-    <p><strong>Tech:</strong> Python, MySQL, BeautifulTable</p>
-    <ul>
-        <li>Full CRUD operations, salary automation (HRA, TA, PF, Net Pay)</li>
-        <li>Error handling & structured data display</li>
-    </ul>
-    <div class="project-btns">
-        <a href="https://github.com/pdas1697/employee_management_system_project-Python-.git" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-github"></i> GitHub
-        </a>
-        <!----<a href="#">
-            <i class="fas fa-chart-simple"></i> Preview
-        </a> ---->
-    </div>
-</div>
+                <h3>🏫 School Management System Website</h3>
+                <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+                <ul><li>Responsive school website with events, notice board, gallery</li><li>User-friendly UI for student info management</li></ul>
+                <div class="project-btns">
+                    <a href="https://github.com/pdas1697/school_management_system-web-designing-project-.git" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
             <div class="card">
-    <h3>📚 Library Management System</h3>
-    <p><strong>Tech:</strong> VB.NET, Windows Forms, MySQL</p>
-    <ul>
-        <li>Manage books/customer records, MDI forms</li>
-        <li>Add, update, delete, search operations</li>
-    </ul>
-    <div class="project-btns">
-        <a href="https://github.com/pdas1697/LibrarySystem-VBNet.git" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-github"></i> GitHub
-        </a>
-        <!----<a href="#">
-            <i class="fas fa-book"></i> Demo
-        </a> ---->
-    </div>
-</div>
+                <h3>👥 Employee Management System</h3>
+                <p><strong>Tech:</strong> Python, MySQL, BeautifulTable</p>
+                <ul><li>Full CRUD operations, salary automation (HRA, TA, PF, Net Pay)</li><li>Error handling & structured data display</li></ul>
+                <div class="project-btns">
+                    <a href="https://github.com/pdas1697/employee_management_system_project-Python-.git" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
             <div class="card">
-    <h3>🏛️ School Management System (C#)</h3>
-    <p><strong>Tech:</strong> C#, Windows Forms, SQL Server</p>
-    <ul>
-        <li>Secure login (Admin/User roles), student modules</li>
-        <li>Password show/hide & DB integration</li>
-    </ul>
-    <div class="project-btns">
-        <a href="https://github.com/pdas1697/School-Management-System.git" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-github"></i> GitHub
-        </a>
-        <!----<a href="#">
-            <i class="fas fa-school"></i> Live
-        </a> --->
-    </div>
-</div>
+                <h3>📚 Library Management System</h3>
+                <p><strong>Tech:</strong> VB.NET, Windows Forms, MySQL</p>
+                <ul><li>Manage books/customer records, MDI forms</li><li>Add, update, delete, search operations</li></ul>
+                <div class="project-btns">
+                    <a href="https://github.com/pdas1697/LibrarySystem-VBNet.git" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
             <div class="card">
-    <h3>🏨 Hotel Booking System</h3>
-    <p><strong>Tech:</strong> PHP, MySQL, HTML/CSS, JS</p>
-    <ul>
-        <li>Booking form with room selection, MySQL storage</li>
-        <li>Dynamic PHP backend, responsive design</li>
-    </ul>
-    <div class="project-btns">
-        <a href="https://github.com/pdas1697/hotel-booking.git" target="_blank" rel="noopener noreferrer">
-            <i class="fab fa-github"></i> GitHub
-        </a>
-        <!---- <a href="#">
-            <i class="fas fa-hotel"></i> Live Demo
-        </a> ----->
-    </div>
-</div>
+                <h3>🏛️ School Management System (C#)</h3>
+                <p><strong>Tech:</strong> C#, Windows Forms, SQL Server</p>
+                <ul><li>Secure login (Admin/User roles), student modules</li><li>Password show/hide & DB integration</li></ul>
+                <div class="project-btns">
+                    <a href="https://github.com/pdas1697/School-Management-System.git" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+            <div class="card">
+                <h3>🏨 Hotel Booking System</h3>
+                <p><strong>Tech:</strong> PHP, MySQL, HTML/CSS, JS</p>
+                <ul><li>Booking form with room selection, MySQL storage</li><li>Dynamic PHP backend, responsive design</li></ul>
+                <div class="project-btns">
+                    <a href="https://github.com/pdas1697/hotel-booking.git" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -564,13 +564,12 @@
 </section>
 
 <footer>
-    <p>© 2026 Prakash Das | Built with <i class="fas fa-heart" style="color:#38bdf8"></i> using modern design | Software Developer Portfolio</p>
+    <p>© 2026 Prakash Das | Built with <i class="fas fa-heart" style="color:#38bdf8"></i> | TCS iON MDM Certified | Data & Development Professional</p>
 </footer>
 
 <button id="scrollTop"><i class="fas fa-arrow-up"></i></button>
 
 <script>
-    // ========== SCROLL TO TOP BUTTON ==========
     const scrollBtn = document.getElementById("scrollTop");
     window.addEventListener("scroll", () => {
         if (window.scrollY > 400) {
@@ -585,7 +584,6 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    // ========== ACTIVE NAVIGATION LINKS ==========
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll("nav ul li a");
 
@@ -610,7 +608,6 @@
     window.addEventListener("scroll", setActiveLink);
     window.addEventListener("load", setActiveLink);
 
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href').substring(1);
@@ -625,63 +622,95 @@
         });
     });
 
-    // Intersection Observer for smooth reveal of cards
+    const fadeElements = document.querySelectorAll('.card, .contact-panel, h2');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
+                entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1 });
     
-    document.querySelectorAll('.card, .contact-panel, h2').forEach((el) => {
+    fadeElements.forEach((el) => {
         if (!el.closest('#home')) {
-            el.style.opacity = "0";
-            el.style.transform = "translateY(20px)";
-            el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+            el.classList.add('fade-up');
             observer.observe(el);
         }
     });
     
-    // Resume download notification
-    document.querySelector('.resume-btn')?.addEventListener('click', function(e) {
-        const notification = document.createElement('div');
-        notification.textContent = '✓ Download started!';
-        notification.style.cssText = `
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            background: #38bdf8;
-            color: #020617;
-            padding: 10px 20px;
-            border-radius: 10px;
-            z-index: 9999;
-            font-weight: 500;
-            animation: slideIn 0.3s ease;
-        `;
-        document.body.appendChild(notification);
-        setTimeout(() => notification.remove(), 2000);
-    });
+    const resumeBtn = document.getElementById('resumeDownloadBtn');
+    if (resumeBtn) {
+        resumeBtn.addEventListener('click', function(e) {
+            const toast = document.createElement('div');
+            toast.textContent = '📄 Resume — showcasing full-stack dev & data management expertise';
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 80px;
+                right: 20px;
+                background: #38bdf8;
+                color: #020617;
+                padding: 10px 20px;
+                border-radius: 12px;
+                z-index: 9999;
+                font-weight: 500;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                animation: slideIn 0.3s ease;
+                font-size: 0.85rem;
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2500);
+        });
+    }
     
-    // Add animation keyframes
-    const style = document.createElement('style');
-    style.textContent = `
+    const hireBtn = document.querySelector('.hire-btn');
+    if (hireBtn) {
+        hireBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                const offsetTop = contactSection.offsetTop - 70;
+                window.scrollTo({ top: offsetTop, behavior: "smooth" });
+                setTimeout(() => {
+                    const miniNote = document.createElement('div');
+                    miniNote.textContent = '💼 MDM certified & data-driven developer — Let’s collaborate!';
+                    miniNote.style.cssText = `
+                        position: fixed;
+                        bottom: 80px;
+                        right: 20px;
+                        background: #2dd4bf;
+                        color: #020617;
+                        padding: 10px 20px;
+                        border-radius: 12px;
+                        z-index: 9999;
+                        font-weight: 500;
+                        animation: slideIn 0.3s ease;
+                    `;
+                    document.body.appendChild(miniNote);
+                    setTimeout(() => miniNote.remove(), 3000);
+                }, 400);
+            }
+        });
+    }
+    
+    const styleSheet = document.createElement("style");
+    styleSheet.textContent = `
         @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .fade-up.visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.6s ease;
         }
     `;
-    document.head.appendChild(style);
-    
-    console.log("Prakash Das Portfolio — Ready!");
+    document.head.appendChild(styleSheet);
+    console.log("Prakash Das Portfolio — Master Data Management (TCS iON) & Data Visualisation credentials integrated");
 </script>
 </body>
 </html>
